@@ -1,0 +1,82 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div style="padding-right: 550px; padding-left: 550px; padding-top: 100px">
+    <p-card
+      header="Sign Up"
+      style="width: 100px; height: 350px; align-items: center"
+    >
+      <div style="width: 370px; height: 250px; align-items: center">
+        <div class="p-fluid">
+          <div class="p-field">
+            <label for="firstname">First Name</label>
+            <input
+              id="firstName"
+              type="text"
+              pInputText
+              placeholder="Enter your first name"
+              formControlName="firstName"
+            />
+          </div>
+          <br />
+          <div class="p-field">
+            <label for="lastname1">Last Name</label>
+            <input
+              id="lastName"
+              type="text"
+              pInputText
+              placeholder="Enter your last name"
+              formControlName="lastName"
+            />
+          </div>
+          <br />
+          <div class="p-field">
+            <label for="email">email</label>
+            <input
+              id="email"
+              type="text"
+              pInputText
+              placeholder="Enter your e-mail"
+              formControlName="email"
+            />
+          </div>
+          <br />
+          <div class="p-field">
+            <label for="password">Password</label>
+            <input
+              id="password"
+              type="text"
+              pInputText
+              placeholder="Enter your Password"
+              formControlName="password"
+            />
+          </div>
+          <br />
+          <div class="p-field">
+            <label for="address">Address</label>
+            <input
+              id="address"
+              type="text"
+              pInputText
+              placeholder="Enter your address"
+              formControlName="address"
+            />
+          </div>
+          <br />
+          <div class="p-field">
+            <label for="address">Phone Number</label>
+            <input
+              id="phoneNo"
+              type="text"
+              pInputText
+              placeholder="Enter your Phone Number"
+              formControlName="PhoneNo"
+            />
+          </div>
+        </div>
+      </div>
+      <br />
+      <div style="text-align: center; padding-bottom: 20px; padding-top: 270px">
+        <p-button label="Sign Up" type="Submit"></p-button>
+      </div>
+    </p-card>
+  </div>
+</form>

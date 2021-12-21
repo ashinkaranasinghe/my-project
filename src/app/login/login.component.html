@@ -1,0 +1,47 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div style="padding-right: 550px; padding-left: 550px; padding-top: 100px">
+    <p-card header="Welcome Back" style="width: 500px">
+      <div>
+        <span class="text-500 font-medium line-height-2"
+          >Don't have an account?</span
+        >
+        <a
+          routerLink="/new-register"
+          routerLinkActive="active"
+          class="font-medium no-underline ml-2 text-blue-500 cursor-pointer"
+          >Create today!</a
+        >
+      </div>
+      <br />
+      <div style="width: 370px; height: 250px; align-items: center">
+        <div class="p-fluid">
+          <div class="p-field">
+            <label for="firstname1">User Name</label>
+            <input
+              id="email"
+              type="text"
+              pInputText
+              placeholder="e-mail"
+              formControlName="email"
+            />
+          </div>
+          <br />
+          <div class="p-field">
+            <!-- <p-password [(ngModel)]="value3" [toggleMask]="true"></p-password> -->
+            <input
+              id="lastname1"
+              type="text"
+              pInputText
+              placeholder="password"
+              formControlName="password"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; padding-bottom: 20px">
+        <p-button label="Login" type="Submit"></p-button>
+      </div>
+    </p-card>
+  </div>
+</form>
