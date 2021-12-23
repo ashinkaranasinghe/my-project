@@ -11,6 +11,7 @@ import { Brand } from '../brand';
 })
 export class BrandListComponent implements OnInit {
   brands: Brand[] = [];
+  loading: boolean = false;
 
   constructor(
     private router: Router,
@@ -20,9 +21,14 @@ export class BrandListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loadData();
+  }
+
+  loadData(): void {
+    this.loading = true;
     this.http.get('http://localhost:3000/brand').subscribe((data: any) => {
-      console.log(data);
       this.brands = data;
+      this.loading = false;
     });
   }
 
@@ -50,6 +56,7 @@ export class BrandListComponent implements OnInit {
               detail: 'Deleted Successfully',
               key: 't1',
             });
+            this.loadData();
           });
       },
       reject: (type: any) => {},

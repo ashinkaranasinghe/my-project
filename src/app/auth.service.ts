@@ -28,4 +28,12 @@ export class AuthService {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
+
+  isAuthenticated(): boolean {
+    let token = this.getToken();
+    if (token) {
+      return true;
+    }
+    return false;
+  }
 }

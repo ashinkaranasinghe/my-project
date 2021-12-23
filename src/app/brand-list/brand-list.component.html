@@ -3,7 +3,17 @@
     <p-button (click)="addBrand()">Add Brand</p-button>
   </div>
 
-  <p-table styleClass="p-datatable-striped" [value]="brands">
+  <p-table
+    styleClass="p-datatable-striped"
+    [value]="brands"
+    [paginator]="true"
+    [rows]="5"
+    [showCurrentPageReport]="true"
+    responsiveLayout="scroll"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    [loading]="loading"
+  >
     <ng-template pTemplate="header">
       <tr>
         <th>Brand Name</th>
@@ -16,8 +26,8 @@
     <ng-template pTemplate="body" let-brand>
       <tr>
         <td>{{ brand.brandName }}</td>
-        <td>{{ brand.createdDate }}</td>
-        <td>{{ brand.updatedDate }}</td>
+        <td>{{ brand.createdAt }}</td>
+        <td>{{ brand.updatedAt }}</td>
 
         <td>
           <button

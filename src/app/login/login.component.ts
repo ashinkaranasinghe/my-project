@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
           });
         } else {
           this.authService.saveToken(response.token);
-          this.router.navigate(['/brand']);
+          this.router.navigate(['/brandList']);
         }
       });
   }
