@@ -33,6 +33,22 @@ const routes: Routes = [
     component: BrandComponent,
     canActivate: [AuthGuard],
   },
+
+  {
+    path: 'supplier',
+    component: BrandComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'supplierList',
+    component: BrandListComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'edit-supplier/:id',
+    component: BrandComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

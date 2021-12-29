@@ -29,6 +29,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrandComponent } from './brand/brand.component';
 import { BrandListComponent } from './brand-list/brand-list.component';
 import { TableModule } from 'primeng/table';
+import { SupplierComponent } from './supplier/supplier.component';
+import { SupplierListComponent } from './supplier-list/supplier-list.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { TableModule } from 'primeng/table';
     HomeComponent,
     BrandComponent,
     BrandListComponent,
+    SupplierComponent,
+    SupplierListComponent,
   ],
   imports: [
     TableModule,
