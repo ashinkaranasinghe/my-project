@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { AuthService } from './../auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
@@ -12,6 +13,7 @@ import { MessageService } from 'primeng/api';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  serverip = environment.serverip;
   // value3!: string;
 
   constructor(
@@ -31,7 +33,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     this.http
-      .post('http://localhost:3000/auth/login', this.loginForm.value)
+      .post(this.serverip + 'auth/login', this.loginForm.value)
       .subscribe((response: any) => {
         if (response.error) {
           this.messageService.add({

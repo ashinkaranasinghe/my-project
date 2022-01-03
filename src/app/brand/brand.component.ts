@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { AuthService } from './../auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
@@ -13,6 +14,7 @@ import { Component, OnInit } from '@angular/core';
 export class BrandComponent implements OnInit {
   brandForm!: FormGroup;
   id!: string | null;
+  serverip = environment.serverip;
   constructor(
     private router: Router,
     private http: HttpClient,
@@ -38,7 +40,7 @@ export class BrandComponent implements OnInit {
     let user = this.authService.getLoggedInUser();
     if (this.id) {
       this.http
-        .put('http://localhost:3000/brand/' + this.id, {
+        .put(this.serverip + 'brand/' + this.id, {
           updatedById: user.id,
           ...this.brandForm.value,
         })
@@ -54,7 +56,7 @@ export class BrandComponent implements OnInit {
         });
     } else {
       this.http
-        .post('http://localhost:3000/brand', {
+        .post(this.serverip + 'brand', {
           createdById: user.id,
           ...this.brandForm.value,
         })

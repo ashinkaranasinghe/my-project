@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -11,6 +12,7 @@ import { Supplier } from '../supplier';
 })
 export class SupplierListComponent implements OnInit {
   suppliers: Supplier[] = [];
+  serverip = environment.serverip;
 
   constructor(
     private router: Router,
@@ -20,7 +22,7 @@ export class SupplierListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.http.get('http://localhost:3000/supplier').subscribe((data: any) => {
+    this.http.get(this.serverip + 'supplier').subscribe((data: any) => {
       this.suppliers = data;
     });
   }
@@ -40,7 +42,7 @@ export class SupplierListComponent implements OnInit {
 
       accept: () => {
         this.http
-          .delete('http://localhost:3000/supplier/' + supplier.id)
+          .delete(this.serverip + 'supplier/' + supplier.id)
           .subscribe((data: any) => {
             this.messageService.add({
               severity: 'info',

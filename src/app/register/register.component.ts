@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -10,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
+  serverip = environment.serverip;
 
   constructor(
     private router: Router,
@@ -30,7 +32,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void {
     this.http
-      .post('http://localhost:3000/user', this.registerForm.value)
+      .post(this.serverip + 'user', this.registerForm.value)
       .subscribe((response) => {
         console.log(response);
         this.router.navigate(['']);

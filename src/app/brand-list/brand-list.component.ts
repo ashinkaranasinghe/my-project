@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -12,6 +13,7 @@ import { Brand } from '../brand';
 export class BrandListComponent implements OnInit {
   brands: Brand[] = [];
   loading: boolean = false;
+  serverip = environment.serverip;
 
   constructor(
     private router: Router,
@@ -26,7 +28,7 @@ export class BrandListComponent implements OnInit {
 
   loadData(): void {
     this.loading = true;
-    this.http.get('http://localhost:3000/brand').subscribe((data: any) => {
+    this.http.get(this.serverip + 'brand').subscribe((data: any) => {
       this.brands = data;
       this.loading = false;
     });
@@ -48,7 +50,7 @@ export class BrandListComponent implements OnInit {
 
       accept: () => {
         this.http
-          .delete('http://localhost:3000/brand/' + brand.id)
+          .delete(this.serverip + 'brand/' + brand.id)
           .subscribe((data: any) => {
             this.messageService.add({
               severity: 'info',

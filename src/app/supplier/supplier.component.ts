@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { AuthService } from './../auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
@@ -13,6 +14,7 @@ import { Component, OnInit } from '@angular/core';
 export class SupplierComponent implements OnInit {
   supplierForm!: FormGroup;
   id!: string | null;
+  serverip = environment.serverip;
 
   constructor(
     private router: Router,
@@ -40,18 +42,16 @@ export class SupplierComponent implements OnInit {
   }
 
   getData(id: string) {
-    this.http
-      .get('http://localhost:3000/supplier/' + id)
-      .subscribe((response) => {
-        this.supplierForm.patchValue(response);
-      });
+    this.http.get(this.serverip + 'supplier/' + id).subscribe((response) => {
+      this.supplierForm.patchValue(response);
+    });
   }
 
   onSubmit(): void {
     let user = this.authService.getLoggedInUser();
     if (this.id) {
       this.http
-        .put('http://localhost:3000/supplier/' + this.id, {
+        .put(this.serverip + 'supplier/' + this.id, {
           updatedById: user.id,
           ...this.supplierForm.value,
         })
@@ -66,7 +66,7 @@ export class SupplierComponent implements OnInit {
         });
     } else {
       this.http
-        .post('http://localhost:3000/supplier', {
+        .post(this.serverip + 'supplier', {
           createdById: user.id,
           ...this.supplierForm.value,
         })
